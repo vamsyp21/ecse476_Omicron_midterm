@@ -119,7 +119,7 @@ void backUp()
 {
     ROS_INFO("Backing up");
     TrajBuilder trajBuilder;
-    mobot_controller::ServiceMsg srv;
+
     geometry_msgs::PoseStamped start_pose;
 
     start_pose.pose = current_state.pose.pose;
