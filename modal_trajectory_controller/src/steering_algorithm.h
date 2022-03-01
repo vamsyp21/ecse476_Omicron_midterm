@@ -47,6 +47,7 @@ const int STOP = 0;
 const int FORWARD = 1;
 const int SPIN = 2;
 const int HALT = 3;
+const int BACKUP = 4;
 
 // define a class, including a constructor, member variables and member functions
 class SteeringController

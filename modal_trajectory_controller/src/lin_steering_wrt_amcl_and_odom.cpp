@@ -35,7 +35,6 @@ SteeringController::SteeringController(ros::NodeHandle* nodehandle):nh_(*nodehan
     
     //initialize desired state, in case this is not yet being published adequately
     des_state_ = current_odom_;  // use the current odom state
-    des_state_mode = 0;     // initially nothing move
     // but make sure the speed/spin commands are set to zero
     current_speed_des_ = 0.0;  // 
     current_omega_des_ = 0.0;    
@@ -78,7 +77,6 @@ void SteeringController::initializePublishers()
     //steering_errs_publisher_ =  nh_.advertise<std_msgs::Float32MultiArray>("steering_errs",1, true);
 }
 
-
 //don't use this...use OdomTf instead
 void SteeringController::odomCallback(const nav_msgs::Odometry& odom_rcvd) {
     // copy some of the components of the received message into member vars
@@ -106,7 +104,6 @@ void SteeringController::desStateCallback(const nav_msgs::Odometry& des_state_rc
     // we care about speed and spin, as well as position estimates x,y and heading
     des_state_ = des_state_rcvd; // save the entire message
     // but also pick apart pieces, for ease of use
-    des_state_mode = (int)des_state_.pose.covariance[0];
     des_state_pose_ = des_state_rcvd.pose.pose;
     des_state_vel_ = des_state_rcvd.twist.twist.linear.x;
     des_state_omega_ = des_state_rcvd.twist.twist.angular.z;
@@ -172,6 +169,8 @@ void SteeringController::lin_steering_algorithm() {
     double heading_err;  
     double lateral_err;
     double trip_dist_err; // error is scheduling...are we ahead or behind?
+    
+    int des_state_mode = (int)des_state_.pose.covariance[0];
 
     // have access to: des_state_vel_, des_state_omega_, des_state_x_, des_state_y_, des_state_phi_ and corresponding odom values    
     double dx = des_state_x_- g_odom_tf_x;
@@ -187,7 +186,6 @@ void SteeringController::lin_steering_algorithm() {
     
     
     // DEBUG OUTPUT...
-    ROS_INFO("Current Mode: %d", des_state_mode);
     ROS_INFO("des_state_phi, odom_phi, heading err = %f, %f, %f", des_state_phi_,odom_phi_,heading_err);
     ROS_INFO("lateral err, trip dist err = %f, %f",lateral_err,trip_dist_err);
     // DEFINITELY COMMENT OUT ALL cout<< OPERATIONS FOR REAL-TIME CODE
@@ -211,12 +209,10 @@ void SteeringController::lin_steering_algorithm() {
         break;
 
     case FORWARD:
-        controller_speed = des_state_vel_ + K_TRIP_DIST * trip_dist_err; //speed up/slow down to null out
-        //controller_omega = des_state_omega_ + K_PHI * heading_err + K_DISP * lateral_err;
+        controller_speed = des_state_vel_ + K_TRIP_DIST * trip_dist_err ; //speed up/slow down to null out
+        controller_omega = des_state_omega_ + K_PHI * heading_err + K_DISP * lateral_err;
 
         controller_omega = MAX_OMEGA * sat(controller_omega / MAX_OMEGA); // saturate omega command at specified limits
-        // lane-drift control
-        controller_omega = controller_speed*(K_PHI*heading_err + K_DISP*lateral_err);
         break;
 
     case SPIN:
@@ -232,7 +228,7 @@ void SteeringController::lin_steering_algorithm() {
 
         controller_omega = MAX_OMEGA * sat(controller_omega / MAX_OMEGA); // saturate omega command at specified limits
         break;
-        
+
     case BACKUP:
         controller_speed = des_state_vel_;
         controller_omega = des_state_omega_;
@@ -251,7 +247,7 @@ void SteeringController::lin_steering_algorithm() {
     twist_cmd2_.twist = twist_cmd_; // copy the twist command into twist2 message
     twist_cmd2_.header.stamp = ros::Time::now(); // look up the time and put it in the header 
     cmd_publisher_.publish(twist_cmd_);  
-    cmd_publisher2_.publish(twist_cmd2_);     
+    cmd_publisher2_.publish(twist_cmd2_);
 }
 
 int main(int argc, char** argv) 
@@ -291,4 +287,5 @@ int main(int argc, char** argv)
     }
     return 0;
 } 
+
 

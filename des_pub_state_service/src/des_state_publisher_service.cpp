@@ -156,7 +156,7 @@ bool desStateServiceCallBack(des_pub_state_service::ServiceMsgRequest &request,
         return response.success = true;
         
     //* illegal input. for testing only
-    case 4:
+    default:
         ROS_ERROR("Please type valid mode number");
         return response.success = false;
         // just in case. don't know if need this.

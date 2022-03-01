@@ -119,7 +119,7 @@ void backUp()
 {
     ROS_INFO("Backing up");
     TrajBuilder trajBuilder;
-
+    des_pub_state_service::ServiceMsg srv;
     geometry_msgs::PoseStamped start_pose;
 
     start_pose.pose = current_state.pose.pose;
@@ -157,7 +157,7 @@ int main(int argc, char **argv)
     ROS_INFO("STEP 1");
     tryMove(x_g/2, y_g, 1);
     
-    backup();
+    backUp();
 
     x_i = current_pose.pose.position.x;
     y_i = current_pose.pose.position.y;
@@ -165,7 +165,7 @@ int main(int argc, char **argv)
     ROS_INFO("STEP 2");
     tryMove(x_g, y_g, 1);
     
-    backup();
+    backUp();
 
     x_i = current_pose.pose.position.x;
     y_i = current_pose.pose.position.y;
