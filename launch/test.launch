@@ -1,0 +1,16 @@
+<launch>
+<!-- Convert an xacro and put on parameter server -->
+<param name="robot_description" command="$(find xacro)/xacro.py '$(find mobot_urdf)/urdf/mobot2.xacro'" />
+
+<!-- Spawn a robot into Gazebo -->
+<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model mobot" />
+
+<node name="des_pub_state_service" pkg="des_pub_state_service" type="des_pub_state_service" />
+<node name="lidar_alarm_mobot" pkg="lidar_alarm_mobot" type="lidar_alarm_mobot" />
+<node name="lin_steering_wrt_amcl_and_odom" pkg="modal_trajectory_controller" type="lin_steering_wrt_amcl_and_odom" />
+<node name="lin_steering_wrt_odom" pkg="modal_trajectory_controller" type="lin_steering_wrt_odom" />
+<node name="modal_trajectory_controller" pkg="modal_trajectory_controller" type="modal_trajectory_controller" />
+<node name="odom_tf_demo" pkg="odom_tf" type="odom_tf_demo" />
+
+
+</launch>
