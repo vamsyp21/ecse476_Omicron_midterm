@@ -26,6 +26,7 @@ const int STOP = 0;
 const int FORWARD = 1;
 const int SPIN = 2;
 const int HALT = 3;
+const int BACKUP =4;
 
 ros::Publisher des_state_pub;
 ros::Publisher des_twist_pub;
@@ -139,7 +140,21 @@ bool desStateServiceCallBack(des_pub_state_service::ServiceMsgRequest &request,
             ros::spinOnce();
         }
         return response.success = true;
-
+        
+    case BACKUP:
+        ROS_INFO("Backing up");
+        trajBuilder.build_backup_traj(g_start_pose, vec_of_states);
+        for (auto state : vec_of_states)
+        {
+            des_state = state;
+            des_state.pose.covariance[0] = BACKUP;
+            des_state.header.stamp = ros::Time::now();
+            des_state_pub.publish(des_state);
+            looprate.sleep();
+            ros::spinOnce();
+        }
+        return response.success = true;
+        
     //* illegal input. for testing only
     case 4:
         ROS_ERROR("Please type valid mode number");

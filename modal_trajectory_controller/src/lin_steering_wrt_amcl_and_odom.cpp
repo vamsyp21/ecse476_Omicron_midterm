@@ -232,6 +232,13 @@ void SteeringController::lin_steering_algorithm() {
 
         controller_omega = MAX_OMEGA * sat(controller_omega / MAX_OMEGA); // saturate omega command at specified limits
         break;
+        
+    case BACKUP:
+        controller_speed = des_state_vel_;
+        controller_omega = des_state_omega_;
+
+        controller_omega = MAX_OMEGA * sat(controller_omega / MAX_OMEGA);
+        break;
 
     default:
         controller_speed = 0;
