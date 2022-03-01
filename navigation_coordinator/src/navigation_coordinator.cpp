@@ -115,6 +115,26 @@ void tryMove(float goal_pose_x, float goal_pose_y, int retry_max)
     }
 }
 
+void backUp()
+{
+    ROS_INFO("Backing up");
+    TrajBuilder trajBuilder;
+
+    geometry_msgs::PoseStamped start_pose;
+
+    start_pose.pose = current_state.pose.pose;
+
+    srv.request.start_pos = current_pose;
+    srv.request.goal_pos = current_pose;
+    srv.request.mode = "4"; // spin so that head toward the goal.
+    if (client.call(srv))
+    {
+        bool success_backup = srv.response.success;
+        ROS_INFO("rotate success? %d", success_backup);
+    }
+    ros::spinOnce();
+}
+
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "navigation_coordinator");
@@ -136,12 +156,16 @@ int main(int argc, char **argv)
 
     ROS_INFO("STEP 1");
     tryMove(x_g/2, y_g, 1);
+    
+    backup();
 
     x_i = current_pose.pose.position.x;
     y_i = current_pose.pose.position.y;
 
     ROS_INFO("STEP 2");
     tryMove(x_g, y_g, 1);
+    
+    backup();
 
     x_i = current_pose.pose.position.x;
     y_i = current_pose.pose.position.y;

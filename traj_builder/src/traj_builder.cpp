@@ -314,6 +314,59 @@ void TrajBuilder::build_trapezoidal_travel_traj(geometry_msgs::PoseStamped start
     vec_of_states.push_back(des_state);
 }
 
+void TrajBuilder::build_backup_traj(geometry_msgs::PoseStamped start_pose,
+            std::vector<nav_msgs::Odometry> &vec_of_states)
+{
+    double x_start = start_pose.pose.position.x;
+    double y_start = start_pose.pose.position.y;
+
+    double psi_des = convertPlanarQuat2Psi(start_pose.pose.orientation);
+    nav_msgs::Odometry des_state;
+
+
+    des_state.header = start_pose.header; //really, want to copy the frame_id
+    des_state.pose.pose = start_pose.pose; //start from here
+    des_state.twist.twist = halt_twist_; // insist on starting from rest
+
+
+    double trip_len = 1.0; // backing up 25 cm, keep this less than 1
+    double t_ramp = sqrt(trip_len / accel_max_);    // ~0.71 sec for 0.25m
+    int npts_ramp = round(t_ramp / dt_);
+
+    double v_peak = -accel_max_*t_ramp; // could consider special cases for reverse motion
+    double d_vel = -alpha_max_*dt_; // incremental velocity changes for ramp-up
+
+    double x_des = x_start; //start from here
+    double y_des = y_start;
+    double speed_des = 0.0; // start at halt
+
+    des_state.twist.twist.angular.z = 0.0; //omega_des; will not change
+    des_state.pose.pose.orientation = convertPlanarPsi2Quaternion(psi_des); //constant
+    // orientation of des_state will not change; only position and twist
+    double t = 0.0;
+    //ramp up/ backward;
+    for (int i = 0; i < npts_ramp; i++) {
+        speed_des -= accel_max_*dt_;      // accelerate backup speed
+        des_state.twist.twist.linear.x = speed_des; //update speed
+        //update positions
+        x_des += speed_des * dt_ * cos(psi_des); //Euler one-step integration
+        y_des += speed_des * dt_ * sin(psi_des); //Euler one-step integration   
+        des_state.pose.pose.position.x = x_des;
+        des_state.pose.pose.position.y = y_des;
+        vec_of_states.push_back(des_state);
+    }
+    //ramp down/ backward:
+    for (int i = 0; i < npts_ramp; i++) {
+        speed_des += accel_max_*dt_; //Euler one-step integration, decelerate to sstop.
+        des_state.twist.twist.linear.x = speed_des;
+        x_des += speed_des * dt_ * cos(psi_des); //Euler one-step integration
+        y_des += speed_des * dt_ * sin(psi_des); //Euler one-step integration        
+        des_state.pose.pose.position.x = x_des;
+        des_state.pose.pose.position.y = y_des;
+        vec_of_states.push_back(des_state);
+    }
+}
+
 
 // constructs straight-line trajectory with triangular velocity profile,
 // respective limits of velocity and accel
