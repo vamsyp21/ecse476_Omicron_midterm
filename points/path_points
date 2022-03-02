@@ -1,0 +1,45 @@
+HAVE NOT MOVED YET
+- Translation: [0.013, -0.002, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.000, 1.000]
+            in RPY (radian) [0.000, -0.000, 0.000]
+            in RPY (degree) [0.000, -0.000, 0.010]
+            
+MOVED TO TABLE AND BACK TO NEAR START
+- Translation: [0.094, 0.065, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.031, 1.000]
+            in RPY (radian) [0.000, -0.000, 0.062]
+            in RPY (degree) [0.000, -0.000, 3.548]
+
+READJUSTED TO INTIAL POSITION
+- Translation: [0.093, 0.065, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.006, 1.000]
+            in RPY (radian) [0.000, -0.000, 0.013]
+            in RPY (degree) [0.000, -0.000, 0.732]
+
+FIRST POINT 45DEGREE ROTATION TOWARDS TABLE BY DOOR
+- Translation: [0.116, 0.070, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.405, 0.914]
+            in RPY (radian) [0.000, -0.000, 0.835]
+            in RPY (degree) [0.000, -0.000, 47.839]
+
+INCREAED ROTATION TOWARDS TABLE
+- Translation: [0.409, 0.395, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.394, 0.919]
+            in RPY (radian) [0.000, -0.000, 0.809]
+            in RPY (degree) [0.000, -0.000, 46.371]
+BACK TO ORIGINAL ORIENTATION
+- Translation: [0.501, 0.416, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.003, 1.000]
+            in RPY (radian) [0.000, -0.000, 0.006]
+            in RPY (degree) [0.000, -0.000, 0.318]
+MOVING TOWARDS TABLE, HALFWAY TO TABLE
+- Translation: [2.055, 0.436, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, -0.018, 1.000]
+            in RPY (radian) [0.000, 0.000, -0.037]
+            in RPY (degree) [0.000, 0.000, -2.114]
+ALMOST TOUCHING TABLE
+- Translation: [3.892, 0.402, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, -0.026, 1.000]
+            in RPY (radian) [0.000, 0.000, -0.051]
+            in RPY (degree) [0.000, 0.000, -2.941]
+
