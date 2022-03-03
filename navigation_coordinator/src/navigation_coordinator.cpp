@@ -160,7 +160,7 @@ int main(int argc, char **argv)
     float x_4 = 2.055;
     float y_4 = 0.454;
 
-    float x_5 = 3.314;
+    float x_5 = 3.014;
     float y_5 = 0.454;
 
     float x_o = current_pose.pose.position.x;
@@ -176,10 +176,10 @@ int main(int argc, char **argv)
     //tryMove(x_3, y_3, 1);
 
     ROS_INFO("STEP 4");
-    tryMove(x_4, y_4, 1);
+    tryMove(x_4, y_4, 0);
 
     ROS_INFO("STEP 5");
-    tryMove(x_5, y_5, 1);
+    tryMove(x_5, y_5, 0);
     
     //backUp();
 
