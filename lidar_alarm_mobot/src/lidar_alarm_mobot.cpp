@@ -20,7 +20,7 @@ int centerIndex = -1; //! NOT real. Update within callback
 // left_wheel_y = 0.282573
 // right_wheel_y = -0.282873
 const float width = 0.8;            // half the width of the rectangular box
-const float dist_detect = 2.5;     // distance to closer edge (there should be a min value for this)
+const float dist_detect = 0.5;     // distance to closer edge (there should be a min value for this)
 
 std::vector<float> range_limit;
 
@@ -45,12 +45,7 @@ double index2Angle(int index) {
 }
 
 // Slicing the vector of the wanted windows
-std::vector<float> vecSlice(std::vector<float> &v, int m, int n)    {
-    std::vector<float> vec;
-    for (int i=m; i<n+1; i++) 
-        vec.push_back(v[i]); 
-    return vec;
-}
+std::vector<float> vecSlice(std::vector<float> &v, int m, int n)    {range_limit
 
 void laserCallback(const sensor_msgs::LaserScan& laser_scan) {
     // setup the call back function for the first message.
@@ -66,9 +61,7 @@ void laserCallback(const sensor_msgs::LaserScan& laser_scan) {
         //! make sure that the index within the set range.
         right_far_angle = atan2(-width/2, dist_detect);
         left_far_angle = atan2(width/2, dist_detect);
-        right_far_index = angle2Index(right_far_angle);
-        left_far_index = angle2Index(left_far_angle);
-        
+        right_far_index = angle2Index(right_far_angle);range_limit
         // Generate a box limit for range:
 
         // vector of ranges to the point within the box
