@@ -45,7 +45,7 @@ double index2Angle(int index) {
 }
 
 // Slicing the vector of the wanted windows
-std::vector<float> vecSlice(std::vector<float> &v, int m, int n)    {range_limit
+std::vector<float> vecSlice(std::vector<float> &v, int m, int n)    {
 
 void laserCallback(const sensor_msgs::LaserScan& laser_scan) {
     // setup the call back function for the first message.
@@ -61,7 +61,7 @@ void laserCallback(const sensor_msgs::LaserScan& laser_scan) {
         //! make sure that the index within the set range.
         right_far_angle = atan2(-width/2, dist_detect);
         left_far_angle = atan2(width/2, dist_detect);
-        right_far_index = angle2Index(right_far_angle);range_limit
+        right_far_index = angle2Index(right_far_angle);
         // Generate a box limit for range:
 
         // vector of ranges to the point within the box
