@@ -175,8 +175,8 @@ int main(int argc, char **argv)
     //ROS_INFO("STEP 3");
     //tryMove(x_3, y_3, 1);
 
-    ROS_INFO("STEP 4");
-    tryMove(x_4, y_4, 0);
+    //ROS_INFO("STEP 4");
+    //tryMove(x_4, y_4, 0);
 
     ROS_INFO("STEP 5");
     tryMove(x_5, y_5, 0);
