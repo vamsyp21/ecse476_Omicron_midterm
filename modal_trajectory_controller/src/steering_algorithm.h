@@ -40,7 +40,7 @@ const double K_DISP = 0.25; // k_d = (k_phi/2)^2
 const double K_TRIP_DIST = 1.0;
 
 // dynamic limitations:  these apply to the steering controller; they may be larger than the limits on des state generation
-const double MAX_SPEED = 1.0; // m/sec; adjust this
+const double MAX_SPEED = 0.5; // m/sec; adjust this
 const double MAX_OMEGA = 1.0; // rad/sec; adjust this
 
 const int STOP = 0;
