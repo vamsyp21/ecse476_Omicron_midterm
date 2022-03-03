@@ -180,8 +180,8 @@ int main(int argc, char **argv)
     
     backUp();
 
-    ROS_INFO("STEP 5");
-    tryMove(x_5, y_5, 0);
+    //ROS_INFO("STEP 5");
+    //tryMove(x_5, y_5, 0);
     
     //backUp();
 
