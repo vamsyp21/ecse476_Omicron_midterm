@@ -166,14 +166,14 @@ int main(int argc, char **argv)
     float x_o = current_pose.pose.position.x;
     float y_o = current_pose.pose.position.y;
 
-    //ROS_INFO("STEP 1");
-    //tryMove(x_1, y_1, 1);
+    ROS_INFO("STEP 1");
+    tryMove(x_1, y_1, 1);
 
-    //ROS_INFO("STEP 2");
-    //tryMove(x_2, y_2, 1);
+    ROS_INFO("STEP 2");
+    tryMove(x_2, y_2, 1);
 
-    //ROS_INFO("STEP 3");
-    //tryMove(x_3, y_3, 1);
+    ROS_INFO("STEP 3");
+    tryMove(x_3, y_3, 1);
 
     ROS_INFO("STEP 4");
     tryMove(x_4, y_4, 1);
@@ -181,7 +181,7 @@ int main(int argc, char **argv)
     ROS_INFO("STEP 5");
     tryMove(x_5, y_5, 1);
     
-    //backUp();
+    backUp();
 
     float x_l = current_pose.pose.position.x;
     float y_l = current_pose.pose.position.y;
