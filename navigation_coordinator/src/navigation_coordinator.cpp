@@ -126,7 +126,7 @@ void backUp()
 
     srv.request.start_pos = current_pose;
     srv.request.goal_pos = current_pose;
-    srv.request.mode = "4"; // spin so that head toward the goal.
+    srv.request.mode = "4"; 
     if (client.call(srv))
     {
         bool success_backup = srv.response.success;
@@ -148,27 +148,43 @@ int main(int argc, char **argv)
 
     TrajBuilder trajBuilder;
 
-    float x_g = 3.903 - 0.2;
-    float y_g = 0.412 + 0.1;
+    float x_1 = 0.116;
+    float y_1 = 0.070;
 
-    float x_i = current_pose.pose.position.x;
-    float y_i = current_pose.pose.position.y;
+    float x_2 = 0.409;
+    float y_2 = 0.395;
 
-    ROS_INFO("STEP 1");
-    tryMove(x_g/2, y_g, 1);
+    float x_3 = 0.501;
+    float y_3 = 0.416;
+
+    float x_4 = 2.055;
+    float y_4 = 0.402;
+
+    float x_5 = 3.892;
+    float y_5 = 0.402;
+
+    float x_o = current_pose.pose.position.x;
+    float y_o = current_pose.pose.position.y;
+
+    //ROS_INFO("STEP 1");
+    //tryMove(x_1, y_1, 1);
+
+    //ROS_INFO("STEP 2");
+    //tryMove(x_2, y_2, 1);
+
+    //ROS_INFO("STEP 3");
+    //tryMove(x_3, y_3, 1);
+
+    ROS_INFO("STEP 4");
+    tryMove(x_4, y_4, 1);
+
+    ROS_INFO("STEP 5");
+    tryMove(x_5, y_5, 1);
     
-    backUp();
+    //backUp();
 
-    x_i = current_pose.pose.position.x;
-    y_i = current_pose.pose.position.y;
-
-    ROS_INFO("STEP 2");
-    tryMove(x_g, y_g, 1);
-    
-    backUp();
-
-    x_i = current_pose.pose.position.x;
-    y_i = current_pose.pose.position.y;
+    float x_l = current_pose.pose.position.x;
+    float y_l = current_pose.pose.position.y;
 
     // stop everything
     stop();
