@@ -158,13 +158,13 @@ int main(int argc, char **argv)
     float y_3 = 0.416;
 
     float x_4 = 3.510;
-    float y_4 = 0.394;
+    float y_4 = 0.404;
 
     float x_5 = -0.506;
-    float y_5 = 1.10;
+    float y_5 = 1.05;
 
     float x_6 = -0.05;
-    float y_6 = 0.20;
+    float y_6 = 0.15;
 
     float x_o = current_pose.pose.position.x;
     float y_o = current_pose.pose.position.y;
