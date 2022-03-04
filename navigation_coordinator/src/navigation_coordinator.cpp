@@ -148,7 +148,7 @@ int main(int argc, char **argv)
 
     TrajBuilder trajBuilder;
 
-    float x_1 = -1.3;
+    float x_1 = -0.3;
     float y_1 = -2.0;
 
     float x_2 = 0.409;
@@ -161,10 +161,10 @@ int main(int argc, char **argv)
     float y_4 = 0.404;
 
     float x_5 = -1.516;
-    float y_5 = 0.30;
+    float y_5 = 0.35;
 
-    float x_6 = -1.55;
-    float y_6 = 0.005;
+    float x_6 = 1.55;
+    float y_6 = 0.15;
 
     float x_o = current_pose.pose.position.x;
     float y_o = current_pose.pose.position.y;
