@@ -158,9 +158,9 @@ int main(int argc, char **argv)
     float y_3 = 0.416;
 
     float x_4 = 3.504;
-    float y_4 = 0.434;
+    float y_4 = 0.424;
 
-    float x_5 = 2.706;
+    float x_5 = -2.706;
     float y_5 = 1.75;
 
     float x_o = current_pose.pose.position.x;
