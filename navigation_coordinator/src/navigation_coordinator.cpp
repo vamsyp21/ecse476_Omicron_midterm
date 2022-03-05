@@ -160,7 +160,7 @@ int main(int argc, char **argv)
     float x_4 = 3.515;
     float y_4 = 0.404;
 
-    float x_5 = -1.63;
+    float x_5 = -1.68;
     float y_5 = 0.45;
 
     float x_6 = 1.40;
