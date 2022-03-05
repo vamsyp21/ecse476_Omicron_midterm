@@ -158,13 +158,13 @@ int main(int argc, char **argv)
     float y_3 = 0.416;
 
     float x_4 = 3.515;
-    float y_4 = 0.394;
+    float y_4 = 0.390;
 
-    float x_5 = -1.500;
-    float y_5 = 0.37;
+    float x_5 = -1.52;
+    float y_5 = 0.4;
 
     float x_6 = 1.00;
-    float y_6 = 0.15;
+    float y_6 = 0.10;
 
     float x_o = current_pose.pose.position.x;
     float y_o = current_pose.pose.position.y;
@@ -192,7 +192,7 @@ int main(int argc, char **argv)
     backUp();
 
     ROS_INFO("STEP 7");
-    tryMove(x_1, y_1, 0);
+   // tryMove(x_1, y_1, 0);
 
     float x_l = current_pose.pose.position.x;
     float y_l = current_pose.pose.position.y;
