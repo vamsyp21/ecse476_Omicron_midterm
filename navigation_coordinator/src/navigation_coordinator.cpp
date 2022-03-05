@@ -149,7 +149,7 @@ int main(int argc, char **argv)
     TrajBuilder trajBuilder;
 
     float x_1 = -0.3;
-    float y_1 = -2.0;
+    float y_1 = 0.4;
 
     float x_2 = 0.409;
     float y_2 = 0.395;
@@ -158,9 +158,9 @@ int main(int argc, char **argv)
     float y_3 = 0.416;
 
     float x_4 = 3.515;
-    float y_4 = 0.390;
+    float y_4 = 0.387;
 
-    float x_5 = -1.6;
+    float x_5 = -1.63;
     float y_5 = 0.45;
 
     float x_6 = 1.40;
@@ -192,7 +192,7 @@ int main(int argc, char **argv)
     backUp();
 
     ROS_INFO("STEP 7");
-   // tryMove(x_1, y_1, 0);
+   tryMove(x_1, y_1, 0);
 
     float x_l = current_pose.pose.position.x;
     float y_l = current_pose.pose.position.y;
