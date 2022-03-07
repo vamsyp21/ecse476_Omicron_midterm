@@ -1,4 +1,5 @@
 # Mobot_Path_Execution_Omicron - Midterm Assignment
+# Video Link: https://drive.google.com/file/d/1fN2K-gDR2o0aPujEiamWxBIBtxwmZ7ds/view?usp=sharing
 
 ## Extended Work From PS4 Mobot Path Execution Assignment
   - Problem Set 4 Assignment for Mobile Robotics
