@@ -18,6 +18,7 @@ ros::ServiceClient client;
 void currStateCallback(const nav_msgs::Odometry &odom)
 {
     current_state = odom;
+    ROS_INFO("current state",odom);
     current_pose.pose = current_state.pose.pose;
 }
 
@@ -144,7 +145,7 @@ int main(int argc, char **argv)
 
     client = n.serviceClient<des_pub_state_service::ServiceMsg>("des_state_publisher_service");
 
-    ros::Subscriber current_state_sub = n.subscribe("/current_state", 1, currStateCallback);
+    ros::Subscriber current_state_sub = n.subscribe("/odom", 1, currStateCallback);
 
     TrajBuilder trajBuilder;
 
