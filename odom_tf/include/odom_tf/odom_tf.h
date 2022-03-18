@@ -65,6 +65,7 @@ private:
     // some objects to support subscriber, service, and publisher
     ros::Subscriber odom_subscriber_; //these will be set up within the class constructor, hiding these ugly details
     ros::Subscriber amcl_subscriber_; // subscribe to amcl message containing estimated robot pose w/rt map frame
+    ros::Subscriber current_state_subscriber_;
     void initializeSubscribers();
     void odomCallback(const nav_msgs::Odometry &odom_rcvd);
     void amclCallback(const geometry_msgs::PoseWithCovarianceStamped &amcl_rcvd);

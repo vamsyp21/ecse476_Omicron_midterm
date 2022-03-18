@@ -1,28 +1,28 @@
 #include <ros/ros.h> //Must include this for all ROS cpp projects
 #include <nav_msgs/Odometry.h>
+#include <odom_tf/odom_tf.h>
 
-ros::Subscriber odom_subscriber;
 
-ros::Publisher current_state_publisher;
 
-nav_msgs::Odometry odom;
+int main(int argc, char** argv) 
+{
+    // ROS set-ups:
+    ros::init(argc, argv, "OdomTf_node"); //node name
 
-void odomCallback (const nav_msgs::Odometry& odomReceived) {
-    odom = odomReceived;
-    current_state_publisher.publish(odom);
-    ROS_INFO("Position-> x: [%f], y: [%f], z: [%f]", odom.pose.pose.position.x,odom.pose.pose.position.y, odom.pose.pose.position.z);
-	ROS_INFO("Orientation-> x: [%f], y: [%f], z: [%f], w: [%f]", odom.pose.pose.orientation.x, odom.pose.pose.orientation.y, odom.pose.pose.orientation.z, odom.pose.pose.orientation.w);
-	ROS_INFO("Vel-> Linear: [%f], Angular: [%f]", odom.twist.twist.linear.x,odom.twist.twist.angular.z);
-}
+    ros::NodeHandle nh; // create a node handle; need to pass this to the class constructor
+	//ros::Publisher pub = nh.advertise<nav_msgs::Odometry>("OdomTf_node", 1);
+    ros::Publisher pub2 = nh.advertise<nav_msgs::Odometry>("/current_state",10);
 
-int main(int argc, char **argv) {
-    ros::init(argc,argv, "current_state_publisher"); // name of the node
-    ros::NodeHandle nh;
+    ROS_INFO("main: instantiating an object of type OdomTf");
+    OdomTf odomTf(&nh);  //instantiate an OdomTf object and pass in pointer to nodehandle for constructor to use
+    OdomTf current_state_subscriber(&nh);
 
-    current_state_publisher = nh.advertise<nav_msgs::Odometry>("/current_state",1);
-
-    odom_subscriber = nh.subscribe("odom", 1, odomCallback);
-
-    ros::spin();
+    ROS_INFO:("starting main loop");
+    ros::Rate sleep_timer(50.0);
+    while (ros::ok()) {
+        ros::spinOnce();
+        sleep_timer.sleep(); 
+    }
+    
     return 0;
-}
+} 

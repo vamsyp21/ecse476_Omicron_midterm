@@ -15,6 +15,7 @@ find_package(catkin_simple REQUIRED)
 #include_directories(${EIGEN3_INCLUDE_DIR})
 #add_definitions(${EIGEN_DEFINITIONS})
 find_package(Boost REQUIRED COMPONENTS system thread)
+find_package(odom_tf)
 catkin_simple()
 
 # example boost usage
