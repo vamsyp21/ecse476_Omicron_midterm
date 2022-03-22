@@ -1,0 +1,51 @@
+Moved Forward and Back to Origin
+
+- Translation: [0.053, 0.097, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.004, 1.000]
+            in RPY (radian) [0.000, -0.000, 0.009]
+            in RPY (degree) [0.000, -0.000, 0.495]
+
+Moved Forward and Turned Slightly
+
+- Translation: [1.216, 0.468, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.012, 1.000]
+            in RPY (radian) [0.000, -0.000, 0.025]
+            in RPY (degree) [0.000, -0.000, 1.405]
+
+Slightly More Forward
+
+- Translation: [2.438, 0.500, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.013, 1.000]
+            in RPY (radian) [0.000, -0.000, 0.027]
+            in RPY (degree) [0.000, -0.000, 1.530]
+
+Almost Touching Table
+
+- Translation: [3.848, 0.529, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.001, 1.000]
+            in RPY (radian) [0.000, -0.000, 0.001]
+            in RPY (degree) [0.000, -0.000, 0.059]
+
+180 Degre Turn and Move Forward back to Base Position
+
+- Translation: [0.685, 0.417, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 1.000, -0.005]
+            in RPY (radian) [0.000, -0.000, -3.131]
+            in RPY (degree) [0.000, -0.000, -179.394]
+
+Turn Towards other Table (45 Degrees)
+
+- Translation: [0.415, 1.447, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.710, 0.704]
+            in RPY (radian) [0.000, -0.000, 1.579]
+            in RPY (degree) [0.000, -0.000, 90.474]
+            
+ Almost Touching Other Table 
+           
+- Translation: [0.422, 2.555, 0.000]
+- Rotation: in Quaternion [0.000, 0.000, 0.697, 0.717]
+            in RPY (radian) [0.000, -0.000, 1.542]
+            in RPY (degree) [0.000, -0.000, 88.350]
+
+
+
