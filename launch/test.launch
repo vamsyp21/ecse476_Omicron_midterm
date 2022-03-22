@@ -4,7 +4,7 @@
 <node name="lin_steering_wrt_amcl_and_odom" pkg="modal_trajectory_controller" type="lin_steering_wrt_amcl_and_odom" />
 <node name="lin_steering_wrt_odom" pkg="modal_trajectory_controller" type="lin_steering_wrt_odom" />
 <node name="modal_trajectory_controller" pkg="modal_trajectory_controller" type="modal_trajectory_controller" />
+<node name="OdomTf" pkg="odom_tf" type="OdomTf" />
 <node name="odom_tf_demo" pkg="odom_tf" type="odom_tf_demo" />
-
 
 </launch>
