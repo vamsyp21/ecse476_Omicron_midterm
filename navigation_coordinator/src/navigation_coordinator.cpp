@@ -18,7 +18,7 @@ ros::ServiceClient client;
 void currStateCallback(const nav_msgs::Odometry &odom)
 {
     current_state = odom;
-    ROS_INFO("/current state",odom);
+    ROS_INFO("/current state",current_state);
     current_pose.pose = current_state.pose.pose;
 }
 
@@ -149,40 +149,41 @@ int main(int argc, char **argv)
 
     TrajBuilder trajBuilder;
 
-    float x_1 = -0.3;
-    float y_1 = -1.2;
+    float x_1 = 1.216;
+    float y_1 = 0.500;
 
-    float x_2 = 0.409;
-    float y_2 = 0.395;
+    float x_2 = 2.438;
+    float y_2 = 0.500;
 
-    float x_3 = 0.37;
-    float y_3 = 0.390;
+    float x_3 = 3.848;
+    float y_3 = 0.500;
 
-    float x_4 = 3.15;
-    float y_4 = -0.7;
+    float x_4 = 0.415;
+    float y_4 = 0.417;
 
-    float x_5 = -1.695;
-    float y_5 = 0.4;
+    float x_5 = 0.415;
+    float y_5 = 1.447;
 
-    float x_6 = 1.3;
-    float y_6 = 0.1104;
+    float x_6 = 0.415;
+    float y_6 = 2.555;
 
     float x_o = current_pose.pose.position.x;
     float y_o = current_pose.pose.position.y;
 
-    //ROS_INFO("STEP 1");
-    //tryMove(x_1, y_1, 1);
+    ROS_INFO("STEP 1");
+    tryMove(x_1, y_1, 1);
 
-    //ROS_INFO("STEP 2");
-    //tryMove(x_2, y_2, 1);
+    ROS_INFO("STEP 2");
+    tryMove(x_2, y_2, 1);
 
     ROS_INFO("STEP 3");
     tryMove(x_3, y_3, 0);
 
+    backUp();
+    
     ROS_INFO("STEP 4");
     tryMove(x_4, y_4, 0);
     
-    backUp();
 
     ROS_INFO("STEP 5");
     tryMove(x_5, y_5, 0);
@@ -193,7 +194,7 @@ int main(int argc, char **argv)
     backUp();
 
     ROS_INFO("STEP 7");
-   tryMove(x_1, y_1, 0);
+   tryMove(x_o, y_o, 0);
 
     float x_l = current_pose.pose.position.x;
     float y_l = current_pose.pose.position.y;
