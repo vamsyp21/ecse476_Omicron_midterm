@@ -1,0 +1,9 @@
+#goal definition [x,y]
+string jsp_data_t
+int32 mode
+---
+#result definition
+bool success
+---
+#feedback
+float32 current_step
