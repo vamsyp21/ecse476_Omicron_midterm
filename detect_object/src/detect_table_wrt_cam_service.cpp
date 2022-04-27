@@ -118,6 +118,8 @@ bool detectTableWrtCamCallBack(detect_object::DetectTransformServiceMsgRequest &
         ros::Duration(0.5).sleep();
     }
 
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr ransac_kinect_ptr(new pcl::PointCloud<pcl::PointXYZRGB>);
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr box_filtered_cloud_ptr(new pcl::PointCloud<pcl::PointXYZRGB>); //ptr to hold filtered Kinect image
     // if out of this loop -> obtained a cloud and store in pclKinect_clr_ptr
     ROS_INFO("receive data from kinect");
 
@@ -134,6 +136,8 @@ bool detectTableWrtCamCallBack(detect_object::DetectTransformServiceMsgRequest &
     pcl::VoxelGrid<pcl::PointXYZRGB> vox;
     vox.setInputCloud(pclKinect_clr_ptr);
 
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr ransac_kinect_ptr(new pcl::PointCloud<pcl::PointXYZRGB>);
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr box_filtered_cloud_ptr(new pcl::PointCloud<pcl::PointXYZRGB>); //ptr to hold filtered Kinect image
     vox.setLeafSize(0.02f, 0.02f, 0.02f);
     vox.filter(*downsampled_kinect_ptr);
     cout << "done voxel filtering" << endl;
