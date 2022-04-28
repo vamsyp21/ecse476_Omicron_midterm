@@ -8,6 +8,5 @@
 <!--node name="OdomTf" pkg="odom_tf" type="OdomTf" /-->
 <node name="odom_tf_demo" pkg="odom_tf" type="odom_tf_demo" />
 <node name="current_state_publisher" pkg="current_state_publisher" type="current_state_publisher"/>
-<node name="navigation_coordinator" pkg="navigation_coordinator" type="navigation_coordinator"/>
 
 </launch>
