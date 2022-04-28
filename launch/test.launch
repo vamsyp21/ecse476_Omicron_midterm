@@ -1,10 +1,13 @@
 <launch>
+
 <node name="des_pub_state_service" pkg="des_pub_state_service" type="des_pub_state_service" />
 <node name="lidar_alarm_mobot" pkg="lidar_alarm_mobot" type="lidar_alarm_mobot" />
 <node name="lin_steering_wrt_amcl_and_odom" pkg="modal_trajectory_controller" type="lin_steering_wrt_amcl_and_odom" />
 <node name="lin_steering_wrt_odom" pkg="modal_trajectory_controller" type="lin_steering_wrt_odom" />
 <node name="modal_trajectory_controller" pkg="modal_trajectory_controller" type="modal_trajectory_controller" />
-<node name="OdomTf" pkg="odom_tf" type="OdomTf" />
+<!--node name="OdomTf" pkg="odom_tf" type="OdomTf" /-->
 <node name="odom_tf_demo" pkg="odom_tf" type="odom_tf_demo" />
+<node name="current_state_publisher" pkg="current_state_publisher" type="current_state_publisher"/>
+<node name="navigation_coordinator" pkg="navigation_coordinator" type="navigation_coordinator"/>
 
 </launch>
